@@ -55,7 +55,11 @@ def get_filters():
 
 
 def get_month():
-    """ Asks user to specify a month to analyze """
+    """ Asks user to specify a month to analyze
+
+    Returns:
+    (str) month - name of month to filter by
+    """
 
     while True:
         month = input("\nWhich month? January, February, March, April, May, or June? ").lower()
