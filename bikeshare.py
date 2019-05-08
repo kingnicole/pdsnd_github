@@ -72,7 +72,11 @@ def get_month():
 
 
 def get_day():
-    """ Asks user to specify a day to analyze """
+    """ Asks user to specify a day to analyze
+
+    Returns:
+    (str) day - name of day to filter by
+    """
 
     while True:
         day = input("\nWhich day? Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday? ").lower()
