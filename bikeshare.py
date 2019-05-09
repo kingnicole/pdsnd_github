@@ -1,5 +1,6 @@
 import time
 import pandas as pd
+import numpy as np
 
 CITY_DATA = { 'chicago': 'chicago.csv',
               'nyc': 'new_york_city.csv',
@@ -161,20 +162,16 @@ def station_stats(df):
     print('\nCalculating The Most Popular Stations and Trip...')
     start_time = time.time()
 
-    # display most commonly used start station
-    print('\nWhat was the most popular start station?')
+    # display most commonly used start and end stations
+    print('\nBelow are the most popular start and end stations, respectively?')
     popular_start = df['Start Station'].mode()[0]
-    print(popular_start)
-
-    # display most commonly used end station
-    print('\nWhat was the most popular end station?')
     popular_end = df['End Station'].mode()[0]
-    print(popular_end)
+    print(np.array([popular_start, popular_end]))
 
     # display most frequent combination of start station and end station trip
     print('\nWhat was the most popular trip from start to end?')
     df['trip'] = df['Start Station'].map(str) + ' TO ' + df['End Station'].map(str)
-    popular_trip = df['trip'].value_counts().idxmax()
+    popular_trip = df['trip'].mode()[0]
     print(popular_trip)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
